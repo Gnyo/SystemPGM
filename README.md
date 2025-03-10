@@ -8,7 +8,7 @@
 
 ### Study✏️
 #### 0307
-① <a href="https://github.com/Gnyo/gamepgm/tree/main/0905"> 강의 OT </a></br>
+① <a href="https://github.com/Gnyo/systemPG/tree/main/0307"> 강의 OT </a></br>
 
 #### 0314
 
