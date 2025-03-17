@@ -1,3 +1,11 @@
+# System Programming 01
+
+## 목차
+[1. 리눅스 파일시스템(Linux File System)](#1-리눅스-파일시스템)
+[2. 실습](#2-실습)
+
+## 1. 리눅스 파일시스템(Linux File System)
+
 - tree 패키지 설치
 ```
 sudo apt install tree
@@ -42,3 +50,8 @@ cat 생성파일명.파일확장자
 cat sample.txt
 ```
 ![image](https://github.com/user-attachments/assets/a7184d23-f47e-4750-a07b-71b71186a539)
+
+## 2. 실습
+#### 디렉터리 및 파일 생성
+![image](https://github.com/user-attachments/assets/70d3ea8e-ea85-49fd-b839-bdaa73c5ebc1)
+
