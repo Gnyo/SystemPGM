@@ -82,7 +82,7 @@ cat sample.txt
 ---
 ## 실습: tree 구조 출력
 
-#### 출력 예시
+### 출력 예시
 ![image](https://github.com/user-attachments/assets/5bb8d148-d9a8-430d-8d10-6bb8f4b71e36)
 
 ### `tree`
@@ -92,5 +92,5 @@ cat sample.txt
 sudo apt install tree
 ```
 
-#### 결과
+### 결과
 ![image](https://github.com/user-attachments/assets/70d3ea8e-ea85-49fd-b839-bdaa73c5ebc1)
