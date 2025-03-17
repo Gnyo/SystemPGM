@@ -3,7 +3,7 @@
 </div>
 </br>
 
-### Game Programming🖥️
+### System Programming🖥️
 <img src="https://img.shields.io/badge/Linux-FCC624?style=for-the-badge&logo=Linux&logoColor=222222"/>
 <br>
 
@@ -12,7 +12,7 @@
 |-------|------|
 | **0307** | [강의 OT](https://github.com/Gnyo/systemPG/tree/main/0307) |
 | **0314** | [강의 정리 및 실습](https://github.com/Gnyo/SystemPGM/tree/main/0314)|
-| **0321** |  |
+| **0321** | [강의 정리 및 실습](https://github.com/Gnyo/SystemPGM/tree/main/0321) |
 | **0328** |  |
 | **0404** |  |
 | **0411** |  |
