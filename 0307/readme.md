@@ -109,7 +109,24 @@ Linux용 Windows 하위 시스템</br>
 #### 1. Linux용 Windows 하위 시스템 기능이 켜져 있는지 확인
 ![image](https://github.com/user-attachments/assets/61a3bdda-3cad-4e08-a1f1-af77bed3f9ac)
 
-#### 2. 
+#### 2. Windows Powershell에서 Ubuntu 설치
+우분투 설치
+```
+wsl --install
+```
+
+![image](https://github.com/user-attachments/assets/643fd450-4720-41e2-a097-c3b030b1b54f) | ![image](https://github.com/user-attachments/assets/d369397c-55ef-4001-9b11-f4d4f83adf66)
+---|---|
+
+버전 변경
+```
+wsl --set-default-version 2
+```
+
+![image](https://github.com/user-attachments/assets/17dd4c9f-4290-4390-adf8-2210f3134885) |
+---|
+
+후 재부팅팅
 
 ### 결과
 ![image](https://github.com/user-attachments/assets/1f6ed186-eba0-42bf-aeef-16e38edfa8af)
