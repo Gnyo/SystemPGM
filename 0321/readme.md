@@ -6,6 +6,8 @@
 ② [파일과 디렉토리](#파일과-디렉토리) </br>
 ③ [디렉토리 명령어](#디렉토리-명령어) </br>
 ④ [실습: gcc](#실습-gcc) </br>
+⑤ [실습: c언어 입·출력](#실습-c언어-입출력)</br>
+⑥ [리눅스에서 생성한 파일 찾기](#리눅스에서-생성한-파일-찾기)</br>
 
 ## 기본 명령어
 
@@ -134,13 +136,18 @@ cat hello.c
 ### `wc`
 
 ### `touch`
+타임스탬프를 찍기 위해 파일 크기가 0인 이름만 존재하는 빈 파일 생성
 ```
 touch 파일
 ```
-타임스탬프를 찍기 위해 파일 크기가 0인 이름만 존재하는 빈 파일 생성
 
 ---
 ## 실습: gcc
+### gcc
+C, C++, Objective-C, Fortran, Ada 등 다양한 프로그래밍 언어를 지원하는 오픈 소스 컴파일러 모음
+- 기본적으로 gcc라고 하면 보통 C 언어 컴파일러를 의미
+- C++은 g++이라는 이름으로 별도의 컴파일러가 포함되어 있음
+
 ### gcc 설치
 #### 1. gcc 설치 명령어 입력
 ```
@@ -154,14 +161,72 @@ gcc --version
 ![image](https://github.com/user-attachments/assets/ca2e2194-e234-485f-8f84-d6becc1d325f) |
 ---|
 
-### gcc 파일 out 하기
+### 컴파일
 ```
 gcc hello.c
 ```
 ![image](https://github.com/user-attachments/assets/4840fa10-86fe-4bbf-9fa5-17eec0893669) | ![image](https://github.com/user-attachments/assets/c09d46b3-c5d0-4693-b2f7-4d142631ed6d)
 ---|---
+따로 출력 파일 이름을 지정하지 않음 | 컴파일 결과가 자동으로 a.out이라는 이름으로 저장됨
 
 
+### 프로그램 실행
+```
+./출력파일명
+./a.out
+```
+![image](https://github.com/user-attachments/assets/05843390-0de0-41be-a959-052911f4228f) |
+---|
+
+### 출력 파일 이름 지정 후 컴파일 및 실행 방법
+hello.c 파일을 컴파일해서 hello라는 실행 파일 생성
+```
+gcc hello.c -o hello
+```
++ 대표 옵션
+	- `-o`: 컴파일된 출력 파일 이름 설정
+	- `-c`: 소스 코드를 오브젝트 파일(.o)로 컴파일 (링크 단계 생략)
+	- `-Wall`: 모든 경고 메시지 출력
+	- `-g`: 디버깅 정보 포함
+
+hello 프로그램 실행
+```
+./hello
+```
+---
+## 실습: c언어 입·출력
+
+### 입·출력 조건
+- 입력: 학번, 이름
+- 출력: 학번, 이름
+
+### 코드 입력
+```c
+#include <stdio.h>
+
+int main() {
+    char name[50];
+    char studentId[20];
+
+    printf("학번을 입력하세요: ");
+    scanf("%s", studentId);
+
+    printf("이름을 입력하세요: ");
+    scanf("%s", name);
+
+    printf("\n입력한 정보\n");
+    printf("학번: %s\n", studentId);
+    printf("이름: %s\n", name);
+
+    return 0;
+}
+```
+
+### 결과
+![image](https://github.com/user-attachments/assets/370aefcf-57b6-4722-9140-aef9ff5a7a65)
+
+---
+## 리눅스에서 생성한 파일 찾기
 ### 사용하고 있는 Ubuntu 주소 찾기
 윈도우 탐색기에서 실습 경로 쉽게 찾을 수 있음!
 ```
@@ -171,3 +236,5 @@ gcc hello.c
 ![image](https://github.com/user-attachments/assets/8ea12bd3-7270-472f-bd28-dd77efe487d4) | ![image](https://github.com/user-attachments/assets/e1736152-5051-48c6-8022-2567a11cfffa)
 ---|---
 Ubuntu | 내가 실습한 파일들
+
+
