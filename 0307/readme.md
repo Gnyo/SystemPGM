@@ -128,5 +128,16 @@ wsl --set-default-version 2
 
 후 재부팅팅
 
+#### 3. Microsoft store에서 Ubuntu 설치
+
+![image](https://github.com/user-attachments/assets/a37b57e8-d4c5-4118-b3b2-8c3632c9cb88)| ![image](https://github.com/user-attachments/assets/482a3971-f299-4fa5-9d23-552cda7b5a8b)
+---| ---
+---| 완료되면 Linux용 Windows 하위 시스템이 켜짐(무시 해도 됨)
+
+#### 4. Ubuntu에서 username과 password 설정
+![image](https://github.com/user-attachments/assets/6977438e-ec1c-4811-83a8-066838ea7c3d) |
+---|
+
 ### 결과
-![image](https://github.com/user-attachments/assets/1f6ed186-eba0-42bf-aeef-16e38edfa8af)
+![image](https://github.com/user-attachments/assets/a33b45d0-f76c-4186-9bca-2f0d33199f36)
+
