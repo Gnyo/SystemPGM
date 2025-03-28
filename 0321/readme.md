@@ -232,7 +232,9 @@ int main() {
 ```
 \\wsl$\
 ```
-
+```
+\\wsl.localhost\Ubuntu-24.04\home
+```
 ![image](https://github.com/user-attachments/assets/8ea12bd3-7270-472f-bd28-dd77efe487d4) | ![image](https://github.com/user-attachments/assets/e1736152-5051-48c6-8022-2567a11cfffa)
 ---|---
 Ubuntu | 내가 실습한 파일들
