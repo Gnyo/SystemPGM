@@ -4,7 +4,7 @@
 </br>
 
 ### System Programming🖥️
-<img src="https://img.shields.io/badge/Linux-FCC624?style=for-the-badge&logo=Linux&logoColor=222222"/>
+<img src="https://img.shields.io/badge/Linux-FCC624?style=for-the-badge&logo=Linux&logoColor=222222"/> <img src="https://img.shields.io/badge/C-A8B9CC?style=for-the-badge&logo=c&logoColor=222222"/>
 <br>
 
 ### Study✏️
