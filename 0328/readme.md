@@ -178,3 +178,50 @@ chmod [-R] 접근권한 파일 혹은 디렉터리
 
 ---
 ## 실습: C언어 프로그램
+### 입·출력 조건
+대문자를 입력받고 소문자로 출력하고, 소문자를 입력받고 대문자로 출력하는 프로그램을 작성하시오.
+단 0을 입력하면 종료하시오.
+
+#### [입출력형식]
+```
+문자 입력 : A
+A의 소문자는 a입니다.
+문자 입력 : B
+B의 소문자는 b입니다.
+문자 입력 : c
+c의 대문자는 C입니다.
+문자 입력 : 0
+```
+
+### 코드
+```c
+#include <stdio.h>
+
+int main() {
+    char ch;
+
+    while (1) {
+        printf("문자 입력 : ");
+        scanf(" %c", &ch);
+
+        if (ch == '0') {
+            break;
+        }
+
+        if (ch >= 'A' && ch <= 'Z') {
+            printf("%c의 소문자는 %c입니다.\n", ch, ch + 32);
+        }
+        else if (ch >= 'a' && ch <= 'z') {
+            printf("%c의 대문자는 %c입니다.\n", ch, ch - 32);
+        }
+        else {
+            printf("영문자만 입력해주세요.\n");
+        }
+    }
+
+    return 0;
+}
+```
+
+### 결과
+![image](https://github.com/user-attachments/assets/f38b9e41-1e50-42f1-b492-8175c00d1a66)
