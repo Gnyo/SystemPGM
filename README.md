@@ -11,10 +11,10 @@
 | 날짜  | 내용 |
 |-------|------|
 | **0307** | [강의 OT](https://github.com/Gnyo/systemPG/tree/main/0307) |
-| **0314** | [강의 정리 및 실습](https://github.com/Gnyo/SystemPGM/tree/main/0314)|
+| **0314** | [강의 정리 및 실습](https://github.com/Gnyo/SystemPGM/tree/main/0314) |
 | **0321** | [강의 정리 및 실습](https://github.com/Gnyo/SystemPGM/tree/main/0321) |
-| **0328** |  |
-| **0404** |  |
+| **0328** | [강의 정리 및 실습](https://github.com/Gnyo/SystemPGM/tree/main/0328) |
+| **0404** | [강의 정리 및 실습](https://github.com/Gnyo/SystemPGM/tree/main/0404) |
 | **0411** |  |
 | **0418** |  |
 | **0502** |  |
