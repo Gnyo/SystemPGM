@@ -1,4 +1,4 @@
-# System Programming 04
+# System Programming 03
 
 ## 목차
 
@@ -125,10 +125,56 @@ file 파일
 ![image](https://github.com/user-attachments/assets/f07f1ba5-691b-405b-bf90-38068c97baa4) |
 ---|
 
-소유자(owner)/그룹(group)/기타(others)로 구분 |
----|
-![image](https://github.com/user-attachments/assets/917163e9-8bd4-4125-b0ef-008f217146b8) |
 
+| 소유자(owner)/그룹(group)/기타(others)로 구분 | 
+| --- | 
+| <div align="center"> ![image](https://github.com/user-attachments/assets/917163e9-8bd4-4125-b0ef-008f217146b8) </div> | 
+| <div align="center"> ![image](https://github.com/user-attachments/assets/06f10378-3b3f-4d64-8573-58df1469ec98) </div> |
+
+
+### `chmod`(change mode)
+파일 혹은 디렉터리의 접근권한을 변경
+```
+chmod [-R] 접근권한 파일 혹은 디렉터리
+```
+- `-R`: 지정된 디렉터리 아래의 모든 파일과 하위 디렉터리에 대해서도 접근권한을 변경
+
+### 접근권한 표현
+#### 8진수
+
+![image](https://github.com/user-attachments/assets/05dee5a8-949d-47be-8447-11757be4374d) | ![image](https://github.com/user-attachments/assets/ca608518-607b-4f9f-825c-3f7e66105dd7)
+---|---
+
+> [!NOTE]
+> ```
+> $ chmod 644 cs1.txt
+> $ ls -l cs1.txt
+> -rw-r--r-- 1 chang … cs1.txt
+> ```
+
+
+### 기호
+
+![image](https://github.com/user-attachments/assets/4e54c03a-2622-4733-98c2-70dfa19553ad) |
+---|
+![image](https://github.com/user-attachments/assets/fc78091b-6c2f-42a1-892e-fcddb5211652) |
+
+> [!NOTE]
+> ```
+> $ chmod g-w cs1.txt
+> $ ls -l cs1.txt
+> –rw-r--r-- 1 chang chang 2088 4월 16 13:37 cs1.txt
+> ```
+> ```
+> $ chmod o-r cs1.txt
+> $ ls -l cs1.txt
+> –rw-r----- 1 chang chang 2088 4월 16 13:37 cs1.txt
+> ```
+> ```
+> $ chmod g+w,o+rw cs1.txt
+> $ ls -l cs1.txt
+> –rw-rw-rw- 1 chang chang 2088 4월 16 13:37 cs1.txt
+> ```
 
 ---
 ## 실습: C언어 프로그램
