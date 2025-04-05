@@ -11,6 +11,7 @@
 ⑧ [8. 무료 영상 생성](#-8-무료-영상-생성) </br>
 ⑨ [9. 오디오 AI 활용](#-9-오디오-ai-활용) </br>
 ⑩ [10. 반복되는 업무는 챗봇에게](#-10-반복되는-업무는-챗봇에게) </br>
+⑪ [실습: 생성형 AI를 이용한 프로그래밍](#실습-생성형-AI를-이용한-프로그래밍)
 
 ---
 
@@ -81,3 +82,73 @@
 - 슬랙, 노션 등과 연동되는 자동화 챗봇 구축  
 - 이메일 자동 회신, 스케줄 등록 등 업무 자동화  
 - Zapier, Make 등의 워크플로우 활용  
+
+---
+## 실습: 생성형 AI를 이용한 프로그래밍
+### 입·출력 조건
+0~255 사이의 수를 입력 받아 2진수로 출력하고, 1의 개수가 몇 개 인지 출력하고, 8비트 중에 상위 4비트를 출력하시오.
+
+### 프롬프트
+생성형 AI: **ChatGPT-4o**
+
+```prompt
+0~255 사이의 수를 입력 받아 2진수로 출력하고, 1의 개수가 몇 개 인지 출력하고, 8비트 중에 상위 4비트를 출력하는 C언어 코드 작성해줘.
+```
+
+![screencapture-chatgpt-c-67f15c1b-a538-8001-872b-6d05e82157dd-2025-04-06-01_55_26](https://github.com/user-attachments/assets/0a056d3f-b973-493b-963c-f195d58e2fc7)
+
+### 코드
+```c
+#include <stdio.h>
+
+// 1의 개수 세기 함수
+int countOnes(unsigned char n) {
+    int count = 0;
+    while (n) {
+        count += n & 1;
+        n >>= 1;
+    }
+    return count;
+}
+
+// 8비트 이진수 출력 함수
+void printBinary(unsigned char n) {
+    for (int i = 7; i >= 0; i--) {
+        printf("%d", (n >> i) & 1);
+    }
+}
+
+int main() {
+    int input;
+
+    printf("0~255 사이의 정수를 입력하세요: ");
+    scanf("%d", &input);
+
+    if (input < 0 || input > 255) {
+        printf("입력값이 범위를 벗어났습니다.\n");
+        return 1;
+    }
+
+    unsigned char number = (unsigned char)input;
+
+    printf("2진수: ");
+    printBinary(number);
+    printf("\n");
+
+    int oneCount = countOnes(number);
+    printf("1의 개수: %d개\n", oneCount);
+
+    unsigned char upper4Bits = (number >> 4) & 0x0F;  // 상위 4비트 추출
+    printf("상위 4비트: ");
+    for (int i = 3; i >= 0; i--) {
+        printf("%d", (upper4Bits >> i) & 1);
+    }
+    printf("\n");
+
+    return 0;
+}
+```
+
+### 결과
+![image](https://github.com/user-attachments/assets/dd42370a-7737-4866-bd18-ab4bb6882240)
+
