@@ -15,7 +15,7 @@
 **3주차** | **0321** | [강의 정리 및 실습](https://github.com/Gnyo/SystemPGM/tree/main/0321) |
 **4주차** | **0328** | [강의 정리 및 실습](https://github.com/Gnyo/SystemPGM/tree/main/0328) |
 **5주차** | **0404** | [강의 정리 및 실습](https://github.com/Gnyo/SystemPGM/tree/main/0404) |
-**6주차** | **0411** |  |
+**6주차** | **0411** | [강의 정리 및 실습](https://github.com/Gnyo/SystemPGM/tree/main/0411) |
 **7주차** | **0418** |  |
 **8주차** | **0425** | 중간시험 |
 **9주차** | **0502** |  |
