@@ -140,11 +140,17 @@ echo UID: $UID
 echo HOME: $HOME
 ```
 - 실행 권한 변경 필요!
-- 
+```
+chmod u+x test2
+```
+
 ![image](https://github.com/user-attachments/assets/83f587bd-ccd6-46aa-b3ba-34f1f349270b) |
 ---|
 
 #### 결과
+```
+./test2
+```
 ![image](https://github.com/user-attachments/assets/0ad70efd-3432-4784-965e-ec420231ba95)|
 ---|
 
