@@ -121,7 +121,7 @@ fi
 결과는 "총 로그 파일 수: N개" 형식으로 출력되어야 한다.
 ### 풀이
 ```
-count=$(ls ~/.log* 2>/dev/null | wc -l)
+count=$(find $HOME -name "*.log" | wc-l)
 echo "총 로그 파일 수: $count개"
 ```
 
