@@ -3,11 +3,11 @@
 </div>
 </br>
 
-### System Programming🖥️
+### 🖥️ System Programming
 <img src="https://img.shields.io/badge/Linux-FCC624?style=for-the-badge&logo=Linux&logoColor=222222"/> <img src="https://img.shields.io/badge/C-A8B9CC?style=for-the-badge&logo=c&logoColor=222222"/>
 <br>
 
-### Study✏️
+### ✏️ Study
 | 주차 | 날짜  | 내용 |
 |------|-------|------|
 **1주차** | **0307** | [강의 OT](https://github.com/Gnyo/systemPG/tree/main/0307) |
@@ -17,8 +17,8 @@
 **5주차** | **0404** | [강의 정리 및 실습](https://github.com/Gnyo/SystemPGM/tree/main/0404) |
 **6주차** | **0411** | [강의 정리 및 실습](https://github.com/Gnyo/SystemPGM/tree/main/0411) |
 **7주차** | **0418** | [강의 정리 및 실습](https://github.com/Gnyo/SystemPGM/tree/main/0418) |
-**8주차** | **0425** | [문제 풀이](https://github.com/Gnyo/SystemPGM/tree/main/0425) |
-**9주차** | **0502** |  |
-**10주차** | **0509** |  |
-**11주차** | **0516** |  |
+**8주차** | **0425** | [중간시험: 문제 풀이](https://github.com/Gnyo/SystemPGM/tree/main/0425) |
+**9주차** | **0502** | [강의 정리 및 실습](https://github.com/Gnyo/SystemPGM/tree/main/0502) |
+**10주차** | **0509** | [강의 정리 및 실습](https://github.com/Gnyo/SystemPGM/tree/main/0509) |
+**11주차** | **0516** | [강의 정리 및 실습](https://github.com/Gnyo/SystemPGM/tree/main/0516) |
 
