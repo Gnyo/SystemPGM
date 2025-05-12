@@ -7,7 +7,9 @@
 ## 컴퓨터 시스템 구조
 
 ### 유닉스 커널(kernel)
-![image](https://github.com/user-attachments/assets/865fdd31-7b83-4a6f-a262-98bdab619751)
+|![image](https://github.com/user-attachments/assets/865fdd31-7b83-4a6f-a262-98bdab619751)|
+|---|
+
 하드웨어를 운영 관리하여 다음과 같은 서비스를 제공:
 - 파일 관리(File management)
 - 프로세스 관리(Process management)
@@ -18,10 +20,14 @@
 ### 시스템 호출이란?
 - 시스템 호출은 커널에 서비스 요청을 위한 프로그래밍 인터페이스
 - 응용 프로그램은 시스템 호출을 통해서 커널에 서비스를 요청함
-![image](https://github.com/user-attachments/assets/1a4e0d74-3007-49c9-b78e-811ed3d34e60)
+
+|![image](https://github.com/user-attachments/assets/1a4e0d74-3007-49c9-b78e-811ed3d34e60)|
+|---|
 
 ### 시스템 호출 과정
-![image](https://github.com/user-attachments/assets/d2632a7b-a6aa-4e26-beb0-bbe3fa7784fd)
+
+|![image](https://github.com/user-attachments/assets/d2632a7b-a6aa-4e26-beb0-bbe3fa7784fd)|
+|---|
 
 ### 시스템 호출 요약
 주요 자원 | 시스템 호출
@@ -36,7 +42,9 @@
 - 연속된 바이트의 나열
 - 특별한 다른 포맷을 정하지 않음
 - 디스크 파일뿐만 아니라 외부 장치에 대한 인터페이스
-![image](https://github.com/user-attachments/assets/cc0addf6-c275-4e32-81f8-846f2da33445)
+
+|![image](https://github.com/user-attachments/assets/cc0addf6-c275-4e32-81f8-846f2da33445)|
+|---|
 
 ---
 ## 시스템 호출
@@ -48,7 +56,8 @@ open() 시스템 호출
 #include <sys/stat.h>
 #include <fcntl.h>
 int open (const char *path, int oflag, [ mode_t mode ]);
-파일 열기에 성공하면 파일 디스크립터를, 실패하면 -1을 리턴
+
+/* 파일 열기에 성공하면 파일 디스크립터를, 실패하면 -1을 리턴 */
 ```
   + 파일 디스크립터는 열린 파일을 나타내는 번호임
 
@@ -70,6 +79,7 @@ fd = open(argv[1], O_RDWR);
 fd = open(argv[1], O_RDWR | O_CREAT, 0600);
 fd = open("tmpfile", O_WRONLY|O_CREAT|O_TRUNC, 0600);
 fd = open("/sys/log", O_WRONLY|O_APPEND|O_CREAT, 0600);
+
 if ((fd = open("tmpfile", O_WRONLY|O_CREAT|O_EXCL, 0666))==-1)
 ```
 
