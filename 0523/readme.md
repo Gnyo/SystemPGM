@@ -34,7 +34,46 @@ int main() {
 ![image](https://github.com/user-attachments/assets/ecff5fb4-cb02-4ea3-bb23-38c660262d55)
 
 - **`fork2.c`**: 부모/자식이 다른 메시지를 출력
+```c
+#include <stdlib.h>
+#include <stdio.h>
+/* 부모 프로세스가 자식 프로세스를 생성하고 서로 다른 메시지를 프린트 */
+int main() {
+    int pid;
+    pid = fork();
+    if (pid ==0) { // 자식 프로세스
+        printf("[Child] : Hello, world pid=%d\n", getpid());
+    }
+    else { // 부모 프로세스
+        printf("[Parent] : Hello, world pid=%d\n", getpid());
+    }
+}
+```
+![image](https://github.com/user-attachments/assets/383e8474-3194-43a6-97a8-f455ebad9d0e)
+
 - **`fork3.c`**: 두 자식 프로세스 생성
+```c
+#include <stdlib.h>
+#include <stdio.h>
+#include <sys/types.h>
+#include <unistd.h>  // fork(), getpid() 함수를 위해 필요
+/* 부모 프로세스가 두 개의 자식 프로세스를 생성한다. */
+int main() {
+    int pid1, pid2;
+    pid1 = fork();
+    if (pid1 == 0) {
+        printf("[Child 1] : Hello, world ! pid=%d\n", getpid());
+        exit(0);
+    }
+    pid2 = fork();
+    if (pid2 == 0) {
+        printf("[Child 2] : Hello, world ! pid=%d\n", getpid());
+        exit(0);
+    }
+    printf("[PARENT] : Hello, world ! pid=%d\n", getpid());
+}
+```
+![image](https://github.com/user-attachments/assets/909e9f0e-1084-4402-9b88-def133569c36)
 
 ---
 ## 프로그램 실행
