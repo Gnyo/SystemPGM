@@ -75,58 +75,77 @@ int main() {
 ```
 ![image](https://github.com/user-attachments/assets/909e9f0e-1084-4402-9b88-def133569c36)
 
+- **`forkwait.c`**: 프로세스 기다리기
+```c
+#include <stdlib.h>
+#include <stdio.h>
+#include <sys/types.h>
+#include <sys/wait.h>  // For wait()
+#include <unistd.h>
+
+/* 부모 프로세스가 자식 프로세스를 생성하고 끝나기를 기다린다. */
+int main() {
+    int pid, child, status;
+    printf("[%d] 부모 프로세스 시작 \n", getpid());
+    
+    pid = fork();
+    
+    if (pid == 0) { // 자식 프로세스
+        printf("[%d] 자식 프로세스 시작 \n", getpid());
+        exit(1); // 자식 프로세스 종료, 상태값 1로 종료
+    }
+    
+    child = wait(&status); // 자식 프로세스가 끝나기를 기다린다.
+    
+    printf("[%d] 자식 프로세스 %d 종료 \n", getpid(), child);
+    printf("\t종료 코드 %d\n", WEXITSTATUS(status)); // 자식 프로세스 종료 상태 출력
+    return 0;
+}
+```
+![image](https://github.com/user-attachments/assets/16cc27aa-e353-4bb1-a396-64783d7c20f1)
+
+- **`waitpid.c`**: 특정 자식 프로세스 기다리기
+```c
+#include <stdlib.h>
+#include <stdio.h>
+#include <sys/types.h>
+#include <sys/wait.h>
+#include <unistd.h>
+
+int main() {
+    int pid1, pid2, child, status;
+    
+    printf("[%d] 부모 프로세스 시작 \n", getpid());
+
+    pid1 = fork();
+    if (pid1 == 0) {  // 자식 프로세스 1
+        printf("[%d] 자식 프로세스[1] 시작 \n", getpid());
+        sleep(1);  // 자식 프로세스 1이 1초 동안 대기
+        printf("[%d] 자식 프로세스[1] 종료 \n", getpid());
+        exit(1);  // 종료 코드 1로 종료
+    }
+
+    pid2 = fork();
+    if (pid2 == 0) {  // 자식 프로세스 2
+        printf("[%d] 자식 프로세스[2] 시작 \n", getpid());
+        sleep(2);  // 자식 프로세스 2가 2초 동안 대기
+        printf("[%d] 자식 프로세스[2] 종료 \n", getpid());
+        exit(2);  // 종료 코드 2로 종료
+    }
+
+    // 부모 프로세스가 자식 프로세스 #1의 종료를 기다린다.
+    child = waitpid(pid1, &status, 0);
+    printf("[%d] 자식 프로세스 #1 %d 종료 \n", getpid(), child);
+    printf("\t종료 코드 %d\n", WEXITSTATUS(status));  // 자식 프로세스 #1의 종료 코드
+
+    // 부모 프로세스가 자식 프로세스 #2의 종료를 기다린다.
+    child = waitpid(pid2, &status, 0);
+    printf("[%d] 자식 프로세스 #2 %d 종료 \n", getpid(), child);
+    printf("\t종료 코드 %d\n", WEXITSTATUS(status));  // 자식 프로세스 #2의 종료 코드
+
+    return 0;
+}
+```
+![image](https://github.com/user-attachments/assets/0bab2cc5-5a41-4aa6-918c-0b7925f19d8e)
+
 ---
-## 프로그램 실행
-
-### exec() 계열 함수
-- **기능**: 현재 프로세스의 메모리 공간을 새로운 프로그램으로 대체
-- **특징**: 성공 시 절대 반환하지 않음
-- **종류**: `execl`, `execv`, `execlp`, `execvp` 등
-
-### 일반적인 사용 패턴
-1. `fork()`로 자식 프로세스 생성
-2. 자식 프로세스가 `exec()` 호출
-3. 부모 프로세스는 계속 진행
-
-### system() 함수
-- **기능**: 명령어를 셸을 통해 실행
-- **내부 구현**: `fork + exec + waitpid` 사용
-- **반환값**: 명령 종료 코드 (정상/실패 여부 판단 가능)
-
----
-## 입출력 재지정
-
-### 출력 재지정
-- **`dup2(fd, 1)`**: 파일 디스크립터를 표준 출력(1)에 복제
-- **효과**: 출력이 파일로 저장되도록 함
-
-### 예제 파일들
-- **`redirect1.c`**: 표준출력을 파일로 변경
-- **`redirect2.c`**: 자식 프로세스의 출력 결과를 파일로 저장 (`execvp` 사용)
-
----
-## 프로세스 그룹
-
-### 프로세스 그룹 개념
-- **구성**: 하나의 그룹 리더와 그에 속한 여러 프로세스
-- **조회**: `getpgrp()` - 현재 프로세스의 그룹 ID 조회
-- **변경**: `setpgid(pid, pgid)` - 그룹 변경 또는 새로운 그룹 생성
-
-### 활용 용도
-- **시그널 전달**에 유용
-- `kill -pid`, `waitpid()`에서 그룹 지정 가능
-
-### 예제 파일들
-- **`pgrp1.c`**: 자식은 부모의 그룹을 물려받음
-- **`pgrp2.c`**: 자식이 자신만의 새로운 그룹 생성
-
----
-## 시스템 부팅
-
-### 부팅 단계의 주요 프로세스
-- **swapper**: 커널의 스케줄러
-- **init**: `/etc/inittab` 기반 초기화
-- **getty/login/shell**: 사용자 로그인 처리 및 셸 실행
-
-### 부팅 과정
-- 전체 부팅 과정은 **fork/exec** 시스템 호출을 통해 진행됨
