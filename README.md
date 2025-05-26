@@ -23,4 +23,6 @@
 **11주차** | **0516** | [강의 정리 및 실습](https://github.com/Gnyo/SystemPGM/tree/main/0516) |
 **12주차** | **0523** | [강의 정리 및 실습](https://github.com/Gnyo/SystemPGM/tree/main/0523) |
 **13주차** | **0530** | [강의 정리 및 실습](https://github.com/Gnyo/SystemPGM/tree/main/0530) |
+**14주차** | **0613** | [과제 내용 및 GitHub 정리 발표](https://github.com/Gnyo/SystemPGM/tree/main/0613) |
+**15주차** | **0620** | [기말시험: 문제 풀이](https://github.com/Gnyo/SystemPGM/tree/main/0620) |
 
