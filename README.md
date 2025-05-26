@@ -21,4 +21,6 @@
 **9주차** | **0502** | [강의 정리 및 실습](https://github.com/Gnyo/SystemPGM/tree/main/0502) |
 **10주차** | **0509** | [강의 정리 및 실습](https://github.com/Gnyo/SystemPGM/tree/main/0509) |
 **11주차** | **0516** | [강의 정리 및 실습](https://github.com/Gnyo/SystemPGM/tree/main/0516) |
+**12주차** | **0523** | [강의 정리 및 실습](https://github.com/Gnyo/SystemPGM/tree/main/0523) |
+**13주차** | **0530** | [강의 정리 및 실습](https://github.com/Gnyo/SystemPGM/tree/main/0530) |
 
