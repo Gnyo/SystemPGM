@@ -1,9 +1,12 @@
 # System Programming Final Presentation
 ## Linux 명령어 명령어 구현
 ### [명령어 리스트📜](https://github.com/Gnyo/SystemPGM/tree/main/0613/Linux_Commands) - 50개
-- `basename`
-  - (옵션 없음)
-- `cat`
+- `basename` (7)
+  - `-s`, `--suffix`: 확장자 제거
+  - `-a`, `--multiple`: 다중 인자 처리
+  - `-z`, `--zero`: 출력 시 널 문자
+
+- `cat` (9)
   - `-n`, `--number`: 모든 줄에 번호 추가
   - `-b`, `--number-nonblank`: 비어있지 않은 줄에만 번호 추가
   - `-s`, `--squeeze-blank`: 연속된 빈 줄을 하나로 압축
