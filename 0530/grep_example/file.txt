@@ -1,0 +1,6 @@
+hello world
+this is a test file
+email: user1@example.com
+another hello line
+HELLO AGAIN
+nothing special here

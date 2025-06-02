@@ -1,0 +1,8 @@
+Meeting notes:
+- Discussed project deadlines
+- Next steps: review codebase
+- Contact: manager@mail-company.co.kr
+
+Pending:
+- Update README
+- Fix build issues
