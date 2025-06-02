@@ -10,19 +10,19 @@
 ### ✏️ Study
 | 주차 | 날짜  | 내용 |
 |------|-------|------|
-**1주차** | **0307** | [강의 OT](https://github.com/Gnyo/systemPG/tree/main/0307) |
-**2주차** | **0314** | [강의 정리 및 실습](https://github.com/Gnyo/SystemPGM/tree/main/0314) |
-**3주차** | **0321** | [강의 정리 및 실습](https://github.com/Gnyo/SystemPGM/tree/main/0321) |
-**4주차** | **0328** | [강의 정리 및 실습](https://github.com/Gnyo/SystemPGM/tree/main/0328) |
-**5주차** | **0404** | [강의 정리 및 실습](https://github.com/Gnyo/SystemPGM/tree/main/0404) |
-**6주차** | **0411** | [강의 정리 및 실습](https://github.com/Gnyo/SystemPGM/tree/main/0411) |
-**7주차** | **0418** | [강의 정리 및 실습](https://github.com/Gnyo/SystemPGM/tree/main/0418) |
-**8주차** | **0425** | [중간시험: 문제 풀이](https://github.com/Gnyo/SystemPGM/tree/main/0425) |
-**9주차** | **0502** | [강의 정리 및 실습](https://github.com/Gnyo/SystemPGM/tree/main/0502) |
-**10주차** | **0509** | [강의 정리 및 실습](https://github.com/Gnyo/SystemPGM/tree/main/0509) |
-**11주차** | **0516** | [강의 정리 및 실습](https://github.com/Gnyo/SystemPGM/tree/main/0516) |
-**12주차** | **0523** | [강의 정리 및 실습](https://github.com/Gnyo/SystemPGM/tree/main/0523) |
-**13주차** | **0530** | [강의 정리 및 실습](https://github.com/Gnyo/SystemPGM/tree/main/0530) |
-**14주차** | **0613** | [과제 내용 및 GitHub 정리 발표](https://github.com/Gnyo/SystemPGM/tree/main/0613) |
-**15주차** | **0620** | [기말시험: 문제 풀이](https://github.com/Gnyo/SystemPGM/tree/main/0620) |
+**1주차** | **0307** | [**강의 OT**](https://github.com/Gnyo/systemPG/tree/main/0307) |
+**2주차** | **0314** | [**강의 정리 및 실습**](https://github.com/Gnyo/SystemPGM/tree/main/0314) |
+**3주차** | **0321** | [**강의 정리 및 실습**](https://github.com/Gnyo/SystemPGM/tree/main/0321) |
+**4주차** | **0328** | [**강의 정리 및 실습**](https://github.com/Gnyo/SystemPGM/tree/main/0328) |
+**5주차** | **0404** | [**강의 정리 및 실습**](https://github.com/Gnyo/SystemPGM/tree/main/0404) |
+**6주차** | **0411** | [**강의 정리 및 실습**](https://github.com/Gnyo/SystemPGM/tree/main/0411) |
+**7주차** | **0418** | [**강의 정리 및 실습**](https://github.com/Gnyo/SystemPGM/tree/main/0418) |
+**8주차** | **0425** | [**중간시험**: 문제 풀이](https://github.com/Gnyo/SystemPGM/tree/main/0425) |
+**9주차** | **0502** | [**강의 정리 및 실습**](https://github.com/Gnyo/SystemPGM/tree/main/0502) |
+**10주차** | **0509** | [**강의 정리 및 실습**](https://github.com/Gnyo/SystemPGM/tree/main/0509) |
+**11주차** | **0516** | [**강의 정리 및 실습**](https://github.com/Gnyo/SystemPGM/tree/main/0516) |
+**12주차** | **0523** | [**강의 정리 및 실습**](https://github.com/Gnyo/SystemPGM/tree/main/0523) |
+**13주차** | **0530** | [**발표**: Linux 명령어 - grep](https://github.com/Gnyo/SystemPGM/tree/main/0530) |
+**14주차** | **0613** | [**최종발표**: Linux 명령어 구현 및 GitHub 정리 과제](https://github.com/Gnyo/SystemPGM/tree/main/0613) |
+**15주차** | **0620** | [**기말시험**: 문제 풀이](https://github.com/Gnyo/SystemPGM/tree/main/0620) | 
 
