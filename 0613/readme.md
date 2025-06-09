@@ -1,8 +1,13 @@
 # System Programming Final Presentation
+
 ## Linux 명령어 명령어 구현
-### 📌 옵션 처리 원칙
-본 프로젝트에서 구현한 모든 Linux 명령어들은 GNU 명령어의 핵심 기능과 주요 옵션들을 충실히 반영하되, 사용자 편의성과 명확한 파싱 구조 유지를 위해 **옵션 결합(short option chaining)은 지원하지 않음.**
-### [📜 명령어 리스트](https://github.com/Gnyo/SystemPGM/tree/main/0613/Linux_Commands) - 50개
+
+### 📌 옵션 처리 원칙  
+본 프로젝트에서 구현한 모든 Linux 명령어들은 GNU 명령어의 핵심 기능과 주요 옵션들을 충실히 반영하되, 사용자 편의성과 명확한 파싱 구조 유지를 위해 **옵션 결합(short option chaining)은 지원하지 않음.**  
+또한, **각 단축형(-a), 장형(--all), 값이 포함된 장형 옵션(--all=value)도 각각 별도의 옵션으로 구현 및 개수로 카운트**함.  
+예를 들어, `-s`, `--suffix`, `--suffix=SUFFIX`는 같은 기능을 하더라도 **형태가 다르므로 3개의 옵션으로 간주**함.
+
+### [📜 명령어 리스트](https://github.com/Gnyo/SystemPGM/tree/main/0613/Linux_Commands) - 총 50개
 - `basename` (8개)
   > 파일 경로에서 마지막 요소(파일명)만 추출하는 명령어
   - `-s`, `--suffix`, `--suffix=SUFFIX`: 지정 접미사 제거
@@ -54,15 +59,21 @@
   - `-L`: 심볼릭 링크 경로 출력 (기본값)  
   - `-P`: 실제 경로(물리적 경로) 출력
 
-- `rev`
+- `rev` (1개)  
+  > 각 줄의 문자를 역순으로 출력하는 명령어
 
-- `sleep`
+- `sleep` (1개)
+  > 지정한 초만큼 프로그램 실행을 일시 정지하는 명령어
 
-- `touch`
+- `touch` (3개)
+  > 지정한 파일의 수정 시간을 현재 시간으로 설정. 존재하지 않으면 새로 생성
+  - `-c`, `--no-create`: 파일이 존재하지 않아도 새로 만들지 않음
 
 - `true` (1개)
   > 항상 성공(exit code 0)을 반환하는 명령어
 
-- `whoami`
+- `whoami` (1개)  
+  > 현재 로그인한 사용자의 이름을 출력하는 명령어
 
-- `yes`
+- `yes` (1개)
+  > 주어진 문자열을 무한히 반복 출력하는 명령어
