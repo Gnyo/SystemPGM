@@ -6,24 +6,21 @@
 또한, `open` 시 `O_CREAT`, `O_APPEND`, `O_TRUNC` 플래그의 의미와 사용 사례를 각각 서술하시오.
 
 ### ❗ 풀이
-#### `open(const char *pathname, int flags[, mode_t mode])`
-- 파일 열거나 없으면 생성
-- **인자**: `pathname`(파일 경로), `flags`(열기 모드), `mode`(`O_CREAT` 시 파일 권한 지정)
-  - `O_CREAT`: 파일이 없으면 새로 생성 (예: 로그 파일 최초 생성)
-  - `O_APPEND`: 파일 끝에만 데이터를 추가 (예: 로그 누적)
-  - `O_TRUNC`: 기존 내용 제거 (예: 로그 초기화)
+#### open(path, flags[, mode])
+- 파일 열기 또는 생성
+- flags: 열기 모드
+  - O_CREAT: 없으면 생성 (예: 최초 로그파일)
+  - O_APPEND: 끝에 추가 (예: 로그 누적)
+  - O_TRUNC: 내용 제거 (예: 로그 초기화)
 
-#### `read(int fd, void *buf, size_t count)`
-- `fd`로부터 `count` 바이트를 읽어 `buf`에 저장
-- **인자**: `fd`(파일 디스크립터), `buf`(버퍼), `count`(읽을 크기)
+#### read(fd, buf, count)
+- fd로부터 count만큼 읽어 buf에 저장
 
-#### `write(int fd, const void *buf, size_t count)`
-- `buf`의 `count` 바이트를 `fd`에 씀
-- **인자**: `fd`(파일 디스크립터), `buf`(버퍼), `count`(쓸 크기)
+#### write(fd, buf, count)
+- buf 내용을 fd에 count만큼 기록
 
-#### `close(int fd)`
-- 파일 디스크립터를 닫고 자원을 해제
-- **인자**: `fd`(디스크립터)
+#### close(fd)
+- 열린 파일 닫고 자원 해제
 
 
 
@@ -34,8 +31,8 @@
 ### 풀이
 - 파일 디스크립터(FD): 커널이 열려 있는 파일을 추적하기 위해 사용하는 정수
   - 0: `stdin`, 1: `stdout`, 2: `stderr`
-- `dup(int oldfd)`: `oldfd`의 복사본을 최소 번호의 새 FD로 반환
-- `dup2(int oldfd, int newfd)`: `newfd`로 복사, 이미 열려 있으면 닫고 덮어씀
+  - `dup(fd)`: 가장 작은 번호로 복사
+  - `dup2(oldfd, newfd)`: newfd로 복사, 이미 열려 있으면 닫음
 
 ```c
 #include <fcntl.h>
@@ -44,13 +41,12 @@
 
 int main() {
     int fd = open("out.txt", O_WRONLY | O_CREAT | O_TRUNC, 0644);
-    dup2(fd, 1); // stdout -> out.txt
-    close(fd);
-
-    printf("파일에 출력됨\n");
+    dup2(dup(fd), 1);
+    printf("hello\n");
     return 0;
 }
 ```
+- `dup()`으로 FD 복사 → `dup2()`로 stdout(1) 덮기 → `printf()`는 파일로 출력됨
 
 
 ## 3. inode의 역할과 링크 비교
