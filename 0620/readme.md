@@ -80,7 +80,8 @@ int main() {
 #include <unistd.h>
 
 int main() {
-    if (fork() == 0) printf("자식\n");
+    pid_t pid = fork();
+    if (pid == 0) printf("자식\n");
     else if (pid > 0) printf("부모\n");
     return 0;
 }
@@ -104,8 +105,8 @@ Linux에서 파일 생성 시 권한이 어떻게 결정되는지 설명하시�
 #include <unistd.h>
 
 int main() {
-    umask(0000); // umask 값 초기화
-    int fd = open("myfile.txt", O_CREAT | O_WRONLY, 0644);
+    umask(0022);  // 그룹과 기타 쓰기 권한 제거
+    int fd = open("myfile.txt", O_CREAT | O_WRONLY, 0777); // 권한은 0777로 설정
     close(fd);
     return 0;
 }
