@@ -40,9 +40,10 @@
 #include <stdio.h>
 
 int main() {
-    int fd = open("out.txt", O_WRONLY | O_CREAT | O_TRUNC, 0644);
+    int fd = open("a.txt", O_WRONLY | O_CREAT | O_TRUNC, 0644);
     dup2(dup(fd), 1);
     printf("hello\n");
+    close(fd);
     return 0;
 }
 ```
@@ -106,7 +107,7 @@ Linux에서 파일 생성 시 권한이 어떻게 결정되는지 설명하시�
 
 int main() {
     umask(0022);  // 그룹과 기타 쓰기 권한 제거
-    int fd = open("myfile.txt", O_CREAT | O_WRONLY, 0777); // 권한은 0777로 설정
+    int fd = open("myfile.txt", O_CREAT | O_WRONLY, 0666);  // 권한 0666으로 설정
     close(fd);
     return 0;
 }
