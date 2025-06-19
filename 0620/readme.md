@@ -23,16 +23,15 @@
 - 열린 파일 닫고 자원 해제
 
 
-
 ## 2. 파일 디스크립터와 `dup()`, `dup2()`
 ### ❔ 문제
 파일 디스크립터의 개념을 설명하고, `dup()`과 `dup2()`를 사용하는 실제 상황(예: 표준 출력을 파일로 리디렉션하는 경우)을 코드와 함께 설명하시오.
 
 ### 풀이
 - 파일 디스크립터(FD): 커널이 열려 있는 파일을 추적하기 위해 사용하는 정수
-  - 0: `stdin`, 1: `stdout`, 2: `stderr`
-  - `dup(fd)`: 가장 작은 번호로 복사
-  - `dup2(oldfd, newfd)`: newfd로 복사, 이미 열려 있으면 닫음
+  - 0: `stdin`, 1: `stdout`, 2: `stderr`, 3 이상: 열려있는 파일들을 가리킴
+  - `dup(fd)`: 3 이상의 비어있는 번호 중 가장 작은 번호로 복사
+  - `dup2(oldfd, newfd)`: oldfd를 newfd로 복사, newfd가 이미 열려 있으면 닫음 (newfd는 덮임)
 
 ```c
 #include <fcntl.h>
@@ -47,7 +46,7 @@ int main() {
     return 0;
 }
 ```
-- `dup()`으로 FD 복사 → `dup2()`로 stdout(1) 덮기 → `printf()`는 파일로 출력됨
+- `dup()`으로 FD 복사 → `dup2()`로 stdout(1)를 덮기 → `printf()`는 파일로 출력됨
 
 
 ## 3. inode의 역할과 링크 비교
@@ -139,90 +138,58 @@ int main() {
 #include <unistd.h>
 #include <time.h>
 
-void print_usage() {
-    printf("사용법: ls [-a|--all] [-l|--long] [-h|--help] [디렉토리]\n");
-}
-
-void print_permissions(mode_t mode) {
-    char perms[] = "----------";
-    if (S_ISDIR(mode)) perms[0] = 'd';
-    if (mode & S_IRUSR) perms[1] = 'r';
-    if (mode & S_IWUSR) perms[2] = 'w';
-    if (mode & S_IXUSR) perms[3] = 'x';
-    if (mode & S_IRGRP) perms[4] = 'r';
-    if (mode & S_IWGRP) perms[5] = 'w';
-    if (mode & S_IXGRP) perms[6] = 'x';
-    if (mode & S_IROTH) perms[7] = 'r';
-    if (mode & S_IWOTH) perms[8] = 'w';
-    if (mode & S_IXOTH) perms[9] = 'x';
-    printf("%s ", perms);
-}
-
 int main(int argc, char *argv[]) {
-    int show_all = 0, show_long = 0;
-    char *target_dir = ".";
+    int a = 0, l = 0;
+    char *d = ".";
+    int o;
 
-    // 먼저 단일 문자 옵션 처리
-    int opt;
-    while ((opt = getopt(argc, argv, "alh")) != -1) {
-        switch (opt) {
-            case 'a': show_all = 1; break;
-            case 'l': show_long = 1; break;
-            case 'h': print_usage(); return 0;
-            default: print_usage(); return 1;
-        }
+    while ((o = getopt(argc, argv, "alh")) != -1) {
+        if (o == 'a') a = 1;
+        if (o == 'l') l = 1;
+        if (o == 'h') { printf("사용법: ls [-a|--all] [-l|--long] [-h|--help] [디렉토리]\n"); return 0; }
     }
 
-    // 롱 옵션 처리
-    optind = 1; // 다시 순회
-    struct option long_opts[] = {
-        {"all",  no_argument, 0, 'a'},
-        {"long", no_argument, 0, 'l'},
-        {"help", no_argument, 0, 'h'},
-        {0, 0, 0, 0}
-    };
-    while ((opt = getopt_long(argc, argv, "", long_opts, NULL)) != -1) {
-        switch (opt) {
-            case 'a': show_all = 1; break;
-            case 'l': show_long = 1; break;
-            case 'h': print_usage(); return 0;
-            default: print_usage(); return 1;
-        }
+    struct option lo[] = {{"all", 0, 0, 'a'}, {"long", 0, 0, 'l'}, {"help", 0, 0, 'h'}, {0, 0, 0, 0}};
+    optind = 1;
+    while ((o = getopt_long(argc, argv, "", lo, NULL)) != -1) {
+        if (o == 'a') a = 1;
+        if (o == 'l') l = 1;
+        if (o == 'h') { printf("사용법: ls [-a|--all] [-l|--long] [-h|--help] [디렉토리]\n"); return 0; }
     }
 
-    // 디렉토리 인자 처리
-    if (optind < argc) {
-        target_dir = argv[optind];
-    }
+    if (optind < argc) d = argv[optind];
+    DIR *dp = opendir(d);
+    if (!dp) { perror("디렉토리 열기 실패"); return 1; }
 
-    DIR *dp = opendir(target_dir);
-    if (!dp) {
-        perror("디렉토리 열기 실패");
-        return 1;
-    }
+    struct dirent *e;
+    while ((e = readdir(dp)) != NULL) {
+        if (!a && e->d_name[0] == '.') continue;
 
-    struct dirent *entry;
-    while ((entry = readdir(dp)) != NULL) {
-        if (!show_all && entry->d_name[0] == '.')
-            continue;
-
-        if (show_long) {
-            struct stat st;
-            char path[1024];
-            snprintf(path, sizeof(path), "%s/%s", target_dir, entry->d_name);
-            if (stat(path, &st) == 0) {
-                print_permissions(st.st_mode);
-                printf("%5ld ", (long)st.st_size);
-
+        if (l) {
+            struct stat s;
+            char p[1024];
+            snprintf(p, sizeof(p), "%s/%s", d, e->d_name);
+            if (stat(p, &s) == 0) {
+                char perms[] = "----------";
+                if (S_ISDIR(s.st_mode)) perms[0] = 'd';
+                if (s.st_mode & S_IRUSR) perms[1] = 'r';
+                if (s.st_mode & S_IWUSR) perms[2] = 'w';
+                if (s.st_mode & S_IXUSR) perms[3] = 'x';
+                if (s.st_mode & S_IRGRP) perms[4] = 'r';
+                if (s.st_mode & S_IWGRP) perms[5] = 'w';
+                if (s.st_mode & S_IXGRP) perms[6] = 'x';
+                if (s.st_mode & S_IROTH) perms[7] = 'r';
+                if (s.st_mode & S_IWOTH) perms[8] = 'w';
+                if (s.st_mode & S_IXOTH) perms[9] = 'x';
+                printf("%s %5ld ", perms, s.st_size);
                 char timebuf[64];
-                strftime(timebuf, sizeof(timebuf), "%b %d %H:%M", localtime(&st.st_mtime));
+                strftime(timebuf, sizeof(timebuf), "%b %d %H:%M", localtime(&s.st_mtime));
                 printf("%s ", timebuf);
             }
         }
 
-        printf("%s\n", entry->d_name);
+        printf("%s\n", e->d_name);
     }
-
     closedir(dp);
     return 0;
 }
