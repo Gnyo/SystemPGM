@@ -6,20 +6,20 @@
 또한, `open` 시 `O_CREAT`, `O_APPEND`, `O_TRUNC` 플래그의 의미와 사용 사례를 각각 서술하시오.
 
 ### ❗ 풀이
-#### open(path, flags[, mode])
+#### `open(path, flags[, mode])`
 - 파일 열기 또는 생성
-- flags: 열기 모드
-  - O_CREAT: 없으면 생성 (예: 최초 로그파일)
-  - O_APPEND: 끝에 추가 (예: 로그 누적)
-  - O_TRUNC: 내용 제거 (예: 로그 초기화)
+- `flags`: 열기 모드
+  - `O_CREAT`: 없으면 생성 (예: 최초 로그파일)
+  - `O_APPEND`: 끝에 추가 (예: 로그 누적)
+  - `O_TRUNC`: 내용 제거 (예: 로그 초기화)
 
-#### read(fd, buf, count)
-- fd로부터 count만큼 읽어 buf에 저장
+#### `read(fd, buf, count)`
+- `fd`로부터 `count`만큼 읽어 `buf`에 저장
 
-#### write(fd, buf, count)
-- buf 내용을 fd에 count만큼 기록
+#### `write(fd, buf, count)`
+- `buf` 내용을 `fd`에 `count`만큼 기록
 
-#### close(fd)
+#### `close(fd)`
 - 열린 파일 닫고 자원 해제
 
 
@@ -80,14 +80,13 @@ int main() {
 #include <unistd.h>
 
 int main() {
-    pid_t pid = fork();
-    if (pid == 0) printf("자식\n");
+    if (fork() == 0) printf("자식\n");
     else if (pid > 0) printf("부모\n");
     return 0;
 }
 ```
 #### 출력 순서
-- OS 스케줄러에 따라 `부모 → 자식`, 또는 `자식 → 부모`
+- 두 프로세스가 동시에 실행되기 때문에 OS 스케줄러에 따라 `부모 → 자식`, 또는 `자식 → 부모`
 
 
 ## 5. 파일 권한과 umask
