@@ -170,21 +170,21 @@ int main(int argc, char *argv[]) {
             char p[1024];
             snprintf(p, sizeof(p), "%s/%s", d, e->d_name);
             if (stat(p, &s) == 0) {
-                char perms[] = "----------";
-                if (S_ISDIR(s.st_mode)) perms[0] = 'd';
-                if (s.st_mode & S_IRUSR) perms[1] = 'r';
-                if (s.st_mode & S_IWUSR) perms[2] = 'w';
-                if (s.st_mode & S_IXUSR) perms[3] = 'x';
-                if (s.st_mode & S_IRGRP) perms[4] = 'r';
-                if (s.st_mode & S_IWGRP) perms[5] = 'w';
-                if (s.st_mode & S_IXGRP) perms[6] = 'x';
-                if (s.st_mode & S_IROTH) perms[7] = 'r';
-                if (s.st_mode & S_IWOTH) perms[8] = 'w';
-                if (s.st_mode & S_IXOTH) perms[9] = 'x';
-                printf("%s %5ld ", perms, s.st_size);
-                char timebuf[64];
-                strftime(timebuf, sizeof(timebuf), "%b %d %H:%M", localtime(&s.st_mtime));
-                printf("%s ", timebuf);
+                char m[] = "----------";
+                if (S_ISDIR(s.st_mode)) m[0] = 'd';
+                if (s.st_mode & S_IRUSR) m[1] = 'r';
+                if (s.st_mode & S_IWUSR) m[2] = 'w';
+                if (s.st_mode & S_IXUSR) m[3] = 'x';
+                if (s.st_mode & S_IRGRP) m[4] = 'r';
+                if (s.st_mode & S_IWGRP) m[5] = 'w';
+                if (s.st_mode & S_IXGRP) m[6] = 'x';
+                if (s.st_mode & S_IROTH) m[7] = 'r';
+                if (s.st_mode & S_IWOTH) m[8] = 'w';
+                if (s.st_mode & S_IXOTH) m[9] = 'x';
+                printf("%s %5ld ", m, s.st_size);
+                char t[64];
+                strftime(t, sizeof(t), "%b %d %H:%M", localtime(&s.st_mtime));
+                printf("%s ", t);
             }
         }
 
@@ -192,7 +192,6 @@ int main(int argc, char *argv[]) {
     }
     closedir(dp);
     return 0;
-}
 ```
 
 ## 7. REST API 구조 및 AI API 호출
